@@ -1,0 +1,17 @@
+set -e
+set -u
+
+export JAVA_HOME=/var/vcap/packages/java8/jdk
+
+HADOOP_VERSION=`ls -r hadoop/hadoop-*-src.tar.gz | sed 's/hadoop\/hadoop-\(.*\)-src\.tar\.gz/\1/' | head -1`
+
+# Extract Apache Hadoop package
+echo "Extracting Apache Hadoop ${HADOOP_VERSION}..."
+tar xzvf ${BOSH_COMPILE_TARGET}/hadoop/hadoop-${HADOOP_VERSION}-src.tar.gz
+if [[ $? != 0 ]] ; then
+  echo "Failed extracting Apache Hadoop ${HADOOP_VERSION}"
+  exit 1
+fi
+
+cp -a ${BOSH_COMPILE_TARGET}/hadoop-${HADOOP_VERSION}-src/hadoop-dist/target/hadoop-${HADOOP_VERSION}/* ${BOSH_INSTALL_TARGET}/
+

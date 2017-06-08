@@ -1,0 +1,14 @@
+set -e
+set -u
+
+HBASE_VERSION=`ls -r hbase/hbase-*.tar.gz | sed 's/hbase\/hbase-\(.*\)\.tar\.gz/\1/' | head -1`
+
+echo "Extracting Apache HBase ${HBASE_VERSION}..."
+tar xzvf ${BOSH_COMPILE_TARGET}/hbase/hbase-${HBASE_VERSION}.tar.gz
+if [[ $? != 0 ]] ; then
+  echo "Failed extracting Apache HBase ${HBASE_VERSION}"
+  exit 1
+fi
+
+echo "Copying Apache HBase ${HBASE_VERSION}..."
+cp -a ${BOSH_COMPILE_TARGET}/hbase-${HBASE_VERSION}/* ${BOSH_INSTALL_TARGET}/

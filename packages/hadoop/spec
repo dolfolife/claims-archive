@@ -1,0 +1,8 @@
+---
+name: hadoop
+
+dependencies:
+  - java8
+
+files:
+  - hadoop-2.8.0/hadoop-2.8.0-src.tar.gz

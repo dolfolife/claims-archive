@@ -1,0 +1,7 @@
+---
+name: claims-archive
+blobstore:
+  provider: local
+  options:
+    blobstore_path: /tmp/claim-blobs
+final_name: claims-archive
