@@ -5,4 +5,4 @@ dependencies:
   - java8
 
 files:
-  - kafka/kafka-0.10.2.1-src.tgz
+  - kafka/kafka_2.12-0.10.2.1-src.tgz
